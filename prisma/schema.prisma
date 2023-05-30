@@ -1,0 +1,20 @@
+generator client {
+    provider = "prisma-client-js"
+    previewFeatures = ["referentialIntegrity"]
+}
+datasource db {
+  provider = "mysql"
+  url = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+
+model SignUp {
+  id         String  @id @default(uuid())
+  firstName  String
+  lastName  String
+  email     String  
+  phone     String  @unique
+  password  String
+  createdAt DateTime @default(now())
+}
